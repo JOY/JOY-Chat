@@ -19,6 +19,15 @@ node_modules
 *.lock
 package-lock.json
 
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# MinIO runtime data
+/docker-compose/local/logto/s3_data/
+/docker-compose/local/logto/.minio.sys/
+
 # ci
 coverage
 .coverage
