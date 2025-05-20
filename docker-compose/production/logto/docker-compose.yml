@@ -51,6 +51,19 @@ services:
       - 'ADMIN_ENDPOINT=https://lobe-auth-ui.example.com'
     entrypoint: ['sh', '-c', 'npm run cli db seed -- --swe && npm start']
 
+  searxng:
+    image: searxng/searxng
+    container_name: chat-searxng
+    volumes:
+      - './searxng-settings.yml:/etc/searxng/settings.yml'
+    environment:
+      - 'SEARXNG_SETTINGS_FILE=/etc/searxng/settings.yml'
+    restart: always
+    networks:
+      - chat-network
+    env_file:
+      - .env
+  
   lobe:
     image: lobehub/lobe-chat-database
     container_name: lobe-chat
