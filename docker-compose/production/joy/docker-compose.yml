@@ -1,0 +1,31 @@
+name: ChatDB
+services:
+
+  searxng:
+    image: searxng/searxng
+    container_name: searxng
+    environment:
+      - 'SEARXNG_SETTINGS_FILE=/etc/searxng/settings.yml'
+    restart: always
+    networks:
+      - Gateway
+    env_file:
+      - .env
+
+  Chat:
+    image: lobehub/lobe-chat-database:latest
+    container_name: Chat
+    ports:
+      - '3210:3210'
+    env_file:
+      - .env
+    networks:
+      - Gateway
+
+volumes:
+  data:
+    driver: local
+
+networks:
+  Gateway:
+    external: true

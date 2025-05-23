@@ -1,0 +1,8 @@
+tunnel: c09a4bf6-6934-4591-b28a-fb9cff1c6813
+
+ingress:
+  - hostname: chat.joy.box
+    service: http://chat-lobe:3210
+  - hostname: db-chat.joy.box
+    service: http://chat-logto:3002
+  - service: http_status:404
